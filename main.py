@@ -1,4 +1,3 @@
-from pathlib import Path
 from unittest.mock import patch
 
 
@@ -30,10 +29,8 @@ def error():
     raise MemoryError
 
 
-modname = Path(__file__).stem
-
 for _ in range(10):
-    with patch(f"{modname}.report"):
+    with patch("main.report"):
         with raises(MemoryError), report_ctx():
             raise MemoryError
 
